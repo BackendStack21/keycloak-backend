@@ -15,7 +15,7 @@ class UserManager {
         return response.data;
     }
 
-    async roles(id, clients) {
+    async roles(id, clients, includeRealmRoles = false) {
         let promises = [];
         clients = clients || this.config.clients || [];
         let accessToken = await this.token.get();
@@ -28,12 +28,14 @@ class UserManager {
                 }
             })));
         // retrieve roles from realm
-        promises.push(this.request
-            .get(`/auth/admin/realms/${this.config.realm}/users/${id}/role-mappings/realm/composite`, {
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                }
-            }));
+        if (includeRealmRoles) {
+            promises.push(this.request
+                .get(`/auth/admin/realms/${this.config.realm}/users/${id}/role-mappings/realm/composite`, {
+                    headers: {
+                        'Authorization': 'Bearer ' + accessToken
+                    }
+                }));
+        }
 
         return (await Promise.all(promises))
             .map((response) => response.data.map((role => role.name)))
