@@ -1,0 +1,31 @@
+{
+  "name": "keycloak-backend",
+  "version": "1.0.0",
+  "description": "Keycloak Node.js minimalist connector for backend services integration. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkyberneees/keycloak-backend.git"
+  },
+  "keywords": [
+    "keycloak",
+    "auth",
+    "oauth",
+    "jwt",
+    "rest"
+  ],
+  "author": "Rolando Santamaria Maso <kyberneees@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jkyberneees/keycloak-backend/issues"
+  },
+  "homepage": "https://github.com/jkyberneees/keycloak-backend#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "config": "^1.26.1",
+    "joi": "^10.6.0"
+  }
+}
