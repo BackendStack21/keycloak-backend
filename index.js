@@ -2,13 +2,12 @@ const Axios = require('axios');
 const UserManager = require('./libs/UserManager');
 const AccessToken = require('./libs/AccessToken');
 
-module.exports = (config) => {
+module.exports = (cfg) => {
     const request = Axios.create({
-        baseURL: config['auth-server-url']
+        baseURL: cfg['auth-server-url']
     });
-
-    const users = new UserManager(config, request);
-    const accessToken = new AccessToken(config, request, users);
+    const users = new UserManager(cfg, request);
+    const accessToken = new AccessToken(cfg, request, users);
 
     return {
         users,
