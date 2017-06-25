@@ -16,7 +16,7 @@ class AccessToken {
         return response.data;
     }
 
-    async refresh(refreshToken) {
+    refresh(refreshToken) {
         let cfg = this.config;
 
         return this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
