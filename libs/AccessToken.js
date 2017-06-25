@@ -1,8 +1,8 @@
 const qs = require('querystring');
 
 class AccessToken {
-    constructor(config, request, users) {
-        this.config = config;
+    constructor(cfg, request, users) {
+        this.config = cfg;
         this.request = request;
         this.users = users;
 
