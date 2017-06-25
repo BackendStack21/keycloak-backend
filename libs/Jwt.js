@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
 const axios = require('axios');
+const Token = require('./Token');
 
 module.exports = {
     verify: async(accessToken) => {
-        let decoded = jwt.decode(accessToken);
-        await axios.get(decoded.iss + '/protocol/openid-connect/userinfo', {
+        let token = new Token(accessToken);
+        await axios.get(token.content.iss + '/protocol/openid-connect/userinfo', {
             headers: {
                 'Authorization': 'Bearer ' + accessToken
             }
         });
 
-        return decoded;
+        return token;
     }
 }

@@ -8,8 +8,11 @@ const keycloak = require('./index')(config);
         // info.sub contains the user id
         let info = await keycloak.accessToken.info(someAccessToken);
 
-        // verify token
-        let decoded = await keycloak.jwt.verify(someAccessToken);
+        // verify token, intended for micro-service authorization
+        let token = await keycloak.jwt.verify(someAccessToken);
+        //console.log(token.isExpired());
+        //console.log(token.hasRealmRole('user'));
+        //console.log(token.hasApplicationRole('nodejs-connect', 'vlm-readonly'));
 
         // how to manually refresh custom access token 
         // (this operation is performed automatically for the service access token)
@@ -20,11 +23,6 @@ const keycloak = require('./index')(config);
             keycloak.users.details(info.sub),
             keycloak.users.roles(info.sub)
         ]);
-
-        console.log(info);
-        console.log(decoded);
-        console.log(details);
-        console.log(roles);
     } catch (err) {
         console.log(err.response.status);
         console.log(err.response.statusText);
