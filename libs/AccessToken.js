@@ -9,27 +9,27 @@ class AccessToken {
         users.setServiceToken(this);
     }
 
-    async refresh(refreshToken, config) {
-        config = config || this.config;
+    async refresh(refreshToken) {
+        let cfg = this.config;
 
-        return this.request.post(`/auth/realms/${config.realm}/protocol/openid-connect/token`, qs.stringify({
+        return this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
             grant_type: 'refresh_token',
-            client_id: config.client_id,
-            client_secret: config.client_secret,
+            client_id: cfg.client_id,
+            client_secret: cfg.client_secret,
             refresh_token: refreshToken
         }));
     }
 
-    async get(config = {}) {
-        config = Object.assign(this.config, config);
+    async get() {
+        let cfg = this.config;
 
         if (!this.data) {
-            let response = await this.request.post(`/auth/realms/${config.realm}/protocol/openid-connect/token`, qs.stringify({
+            let response = await this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
                 grant_type: 'password',
-                username: config.username,
-                password: config.password,
-                client_id: config.client_id,
-                client_secret: config.client_secret
+                username: cfg.username,
+                password: cfg.password,
+                client_id: cfg.client_id,
+                client_secret: cfg.client_secret
             }));
             this.data = response.data;
 
@@ -41,14 +41,14 @@ class AccessToken {
                 return this.data.access_token;
             } catch (err) {
                 try {
-                    let response = await this.refresh(this.data.refresh_token, config);
+                    let response = await this.refresh(this.data.refresh_token);
                     this.data = response.data;
 
                     return this.data.access_token;
                 } catch (err) {
                     delete this.data;
 
-                    return this.get(config);
+                    return this.get();
                 }
             }
         }
