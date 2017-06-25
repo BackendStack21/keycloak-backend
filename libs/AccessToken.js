@@ -1,12 +1,19 @@
 const qs = require('querystring');
 
 class AccessToken {
-    constructor(cfg, request, users) {
+    constructor(cfg, request) {
         this.config = cfg;
         this.request = request;
-        this.users = users;
+    }
 
-        users.setServiceToken(this);
+    async info(accessToken) {
+        let response = await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        });
+
+        return response.data;
     }
 
     async refresh(refreshToken) {
@@ -36,7 +43,7 @@ class AccessToken {
             return this.data.access_token;
         } else {
             try {
-                await this.users.info(this.data.access_token);
+                await this.info(this.data.access_token);
 
                 return this.data.access_token;
             } catch (err) {

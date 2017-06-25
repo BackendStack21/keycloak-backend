@@ -5,7 +5,7 @@ const keycloak = require('./index')(config);
     try {
         //setInterval(async() => {
         let start = new Date().getTime();
-        let info = await keycloak.users.info(await keycloak.accessToken.get());
+        let info = await keycloak.accessToken.info(await keycloak.accessToken.get());
         let [details, roles] = await Promise.all([
             keycloak.users.details(info.sub),
             keycloak.users.roles(info.sub)

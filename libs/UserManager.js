@@ -1,21 +1,8 @@
 class UserManager {
-    constructor(config, request) {
+    constructor(config, request, token) {
         this.config = config;
         this.request = request;
-    }
-
-    setServiceToken(token) {
         this.token = token;
-    }
-
-    async info(accessToken) {
-        let response = await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            }
-        });
-
-        return response.data;
     }
 
     async details(id) {

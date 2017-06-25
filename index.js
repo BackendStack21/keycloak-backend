@@ -6,9 +6,9 @@ module.exports = (cfg) => {
     const request = Axios.create({
         baseURL: cfg['auth-server-url']
     });
-    const users = new UserManager(cfg, request);
-    const accessToken = new AccessToken(cfg, request, users);
 
+    const accessToken = new AccessToken(cfg, request);
+    const users = new UserManager(cfg, request, accessToken);
     return {
         users,
         accessToken
