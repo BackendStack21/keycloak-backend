@@ -7,8 +7,9 @@ const keycloak = require('./index')(config);
         // info.sub contains the user id
         let info = await keycloak.accessToken.info(await keycloak.accessToken.get());
 
-        // how to force service token refresh
-        await keycloak.accessToken.refresh(await keycloak.accessToken.get());
+        // how to manually refresh custom access token 
+        // (this operation is performed automatically for the service access token)
+        let newAccessToken = await keycloak.accessToken.refresh(await keycloak.accessToken.get());
 
         // how to get user details given the user id
         let [details, roles] = await Promise.all([
