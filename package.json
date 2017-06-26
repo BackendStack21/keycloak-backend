@@ -17,6 +17,12 @@
     "jwt",
     "rest"
   ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "libs/"
+  ],
   "author": "Rolando Santamaria Maso <kyberneees@gmail.com>",
   "license": "MIT",
   "bugs": {
