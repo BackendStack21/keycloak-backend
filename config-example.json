@@ -1,5 +1,5 @@
 {
-    "realm": "vlm",
+    "realm": "myrealm",
     "auth-server-url": "http://keycloak.dev:8080",
     "client_id": "nodejs-connect",
     "client_secret": "c88a2c21-9d1a-4f83-a18d-66d75c4d8020",
