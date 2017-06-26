@@ -57,7 +57,7 @@ Efficiently maintaining a valid access token can be hard. Get it easy by using:
 ```js
 let accessToken = await keycloak.accessToken.get()
 ```
-Or just:
+Then:
 ```js
 request.get('http://serviceb.com/v1/fetch/accounts', {
   'auth': {
