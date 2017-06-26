@@ -1,5 +1,5 @@
 # keycloak-backend
-Keycloak Node.js minimalist connector for backend services integration. 
+Keycloak Node.js minimalist connector for backend services integration. It aims to serve as base for high performance authorization middlewares.
 
 ## Keycloak Introduction
 The awesome open-source Identity and Access Management solution develop by RedHat.
