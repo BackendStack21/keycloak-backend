@@ -1,5 +1,5 @@
 const config = require('./config-example');
-const keycloak = require('./index')(config);
+const keycloak = require('./../index')(config);
 const fs = require('fs');
 
 (async() => {
