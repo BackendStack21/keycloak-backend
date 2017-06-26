@@ -12,9 +12,10 @@ function Token(token) {
 }
 
 Token.prototype.isExpired = function () {
-    if ((this.content.exp * 1000) < Date.now()) {
+    if ((this.content.exp * 1000) > Date.now()) {
         return false;
     }
+    return true;
 };
 
 Token.prototype.hasApplicationRole = function (appName, roleName) {
