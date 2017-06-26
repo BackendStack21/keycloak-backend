@@ -34,8 +34,5 @@ const fs = require('fs');
         ]);
     } catch (err) {
         console.log(err);
-        console.log(err.response.status);
-        console.log(err.response.statusText);
-        console.log(err.response.data);
     }
 })();
