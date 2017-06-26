@@ -1,15 +1,21 @@
 const axios = require('axios');
 const Token = require('./Token');
 
-module.exports = {
-    verify: async(accessToken) => {
-        let token = new Token(accessToken);
-        await axios.get(token.content.iss + '/protocol/openid-connect/userinfo', {
+class Jwt {
+    constructor(config, request) {
+        this.config = config;
+        this.request = request;
+    }
+
+    async verify(accessToken) {
+        await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
             headers: {
                 'Authorization': 'Bearer ' + accessToken
             }
         });
 
-        return token;
+        return new Token(accessToken);
     }
 }
+
+module.exports = Jwt;

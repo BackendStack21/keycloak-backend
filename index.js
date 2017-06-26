@@ -10,8 +10,10 @@ module.exports = (cfg) => {
 
     const accessToken = new AccessToken(cfg, request);
     const users = new UserManager(cfg, request, accessToken);
+    const jwt = new Jwt(cfg, request);
+
     return {
-        jwt: Jwt,
+        jwt,
         users,
         accessToken
     };
