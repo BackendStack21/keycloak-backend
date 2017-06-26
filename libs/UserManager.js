@@ -15,9 +15,8 @@ class UserManager {
         return response.data;
     }
 
-    async roles(id, clients, includeRealmRoles = false) {
+    async roles(id, clients = [], includeRealmRoles = false) {
         let promises = [];
-        clients = clients || this.config.clients || [];
         let accessToken = await this.token.get();
 
         // retrieve roles from each target client
