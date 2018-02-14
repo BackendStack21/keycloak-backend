@@ -1,9 +1,10 @@
 {
   "name": "keycloak-backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Keycloak Node.js minimalist connector for backend services integration. ",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "transpile": "babel libs --out-dir src --ignore templates/* --copy-files",
     "test": "mocha test"
   },
   "repository": {
@@ -20,8 +21,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "index.js",
-    "libs/"
+    "src/"
   ],
   "author": "Rolando Santamaria Maso <kyberneees@gmail.com>",
   "license": "MIT",
@@ -32,5 +32,9 @@
   "dependencies": {
     "axios": "^0.16.2",
     "jsonwebtoken": "^7.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }

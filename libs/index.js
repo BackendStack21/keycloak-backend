@@ -1,7 +1,7 @@
 const Axios = require('axios');
-const UserManager = require('./libs/UserManager');
-const AccessToken = require('./libs/AccessToken');
-const Jwt = require('./libs/Jwt');
+const UserManager = require('./UserManager');
+const AccessToken = require('./AccessToken');
+const Jwt = require('./Jwt');
 
 module.exports = (cfg) => {
     const request = Axios.create({
