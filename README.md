@@ -1,6 +1,8 @@
 # keycloak-backend
 Keycloak Node.js minimalist connector for backend services integration. It aims to serve as base for high performance authorization middlewares.
 
+> Note: Version 2.x uses `jsonwebtoken 8.x`
+
 ## Keycloak Introduction
 The awesome open-source Identity and Access Management solution develop by RedHat.
 Keycloak support those very nice features you are looking for:
