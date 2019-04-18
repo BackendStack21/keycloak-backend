@@ -59,5 +59,3 @@ typings/
 
 # transpiled sources
 src/
-
-package-lock.json
