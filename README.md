@@ -24,7 +24,7 @@ More about Keycloak: http://www.keycloak.org/
 ## Using the keycloak-backend module
 ### Instantiating
 ```js
-const keycloak = require('keycloak-connector')({
+const keycloak = require('keycloak-backend')({
     "realm": "your realm name",
     "auth-server-url": "http://keycloak.dev:8080",
     "client_id": "your client name",
