@@ -59,3 +59,5 @@ typings/
 
 # transpiled sources
 src/
+
+.DS_Store
