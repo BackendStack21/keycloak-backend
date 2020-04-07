@@ -25,7 +25,7 @@ class Jwt {
   async verify (accessToken) {
     await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
       headers: {
-        'Authorization': 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken
       }
     })
 

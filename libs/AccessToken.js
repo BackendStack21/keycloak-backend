@@ -7,9 +7,9 @@ class AccessToken {
   }
 
   async info (accessToken) {
-    let response = await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
+    const response = await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
       headers: {
-        'Authorization': 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken
       }
     })
 
@@ -17,7 +17,7 @@ class AccessToken {
   }
 
   refresh (refreshToken) {
-    let cfg = this.config
+    const cfg = this.config
 
     return this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
       grant_type: 'refresh_token',
@@ -28,10 +28,10 @@ class AccessToken {
   }
 
   async get () {
-    let cfg = this.config
+    const cfg = this.config
 
     if (!this.data) {
-      let response = await this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
+      const response = await this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
         grant_type: 'password',
         username: cfg.username,
         password: cfg.password,
@@ -48,7 +48,7 @@ class AccessToken {
         return this.data.access_token
       } catch (err) {
         try {
-          let response = await this.refresh(this.data.refresh_token)
+          const response = await this.refresh(this.data.refresh_token)
           this.data = response.data
 
           return this.data.access_token

@@ -4,10 +4,10 @@ const fs = require('fs');
 
 (async () => {
   try {
-    let someAccessToken = await keycloak.accessToken.get()
+    const someAccessToken = await keycloak.accessToken.get()
     // how to get openid info from access token...
     // info.sub contains the user id
-    let info = await keycloak.accessToken.info(someAccessToken)
+    const info = await keycloak.accessToken.info(someAccessToken)
 
     // verify token online, intended for micro-service authorization
     let token = await keycloak.jwt.verify(someAccessToken)
@@ -17,7 +17,7 @@ const fs = require('fs');
 
     // verify token offline, intended for micro-service authorization
     // using this method does not consider token invalidation, avoid long-term tokens here
-    let cert = fs.readFileSync('public_cert.pem')
+    const cert = fs.readFileSync('public_cert.pem')
     token = await keycloak.jwt.verifyOffline(someAccessToken, cert)
     console.log(token.isExpired())
     // console.log(token.hasRealmRole('user'))
@@ -29,7 +29,7 @@ const fs = require('fs');
     console.log(token.isExpired())
 
     // how to get user details given the user id
-    let [details, roles] = await Promise.all([
+    const [details, roles] = await Promise.all([
       keycloak.users.details(info.sub),
       keycloak.users.roles(info.sub)
     ])
