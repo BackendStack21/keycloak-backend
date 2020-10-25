@@ -1,6 +1,6 @@
 {
   "name": "keycloak-backend",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Keycloak Node.js minimalist connector for backend services integration. ",
   "main": "src/index.js",
   "scripts": {
@@ -32,12 +32,12 @@
   },
   "homepage": "https://github.com/jkyberneees/keycloak-backend#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "standard": "^14.3.3"
+    "standard": "^15.0.0"
   }
 }
