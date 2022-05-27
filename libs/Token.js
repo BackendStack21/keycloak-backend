@@ -4,7 +4,7 @@
 function Token (token) {
   this.token = token
 
-  var parts = token.split('.')
+  const parts = token.split('.')
   this.header = JSON.parse(Buffer.from((parts[0], 'base64').toString()))
   this.content = JSON.parse(Buffer.from((parts[1], 'base64').toString()))
   this.signature = Buffer.from(parts[2], 'base64')
@@ -19,7 +19,7 @@ Token.prototype.isExpired = function () {
 }
 
 Token.prototype.hasApplicationRole = function (appName, roleName) {
-  var appRoles = this.content.resource_access[appName]
+  const appRoles = this.content.resource_access[appName]
 
   if (!appRoles) {
     return false
