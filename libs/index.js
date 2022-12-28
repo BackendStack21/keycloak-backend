@@ -1,20 +1,23 @@
-const Axios = require('axios')
-const UserManager = require('./UserManager')
+const Axios = require('axios').default
 const AccessToken = require('./AccessToken')
 const Jwt = require('./Jwt')
 
 module.exports = (cfg) => {
-  const request = Axios.create({
-    baseURL: cfg['auth-server-url']
+  const client = Axios.create({
+    baseURL: cfg.keycloak_base_url
   })
 
-  const accessToken = new AccessToken(cfg, request)
-  const users = new UserManager(cfg, request, accessToken)
-  const jwt = new Jwt(cfg, request)
+  if (cfg.is_legacy_endpoint) {
+    cfg.prefix = '/auth'
+  } else {
+    cfg.prefix = ''
+  }
+
+  const accessToken = new AccessToken(cfg, client)
+  const jwt = new Jwt(cfg, client)
 
   return {
     jwt,
-    users,
     accessToken
   }
 }

@@ -1,11 +1,8 @@
 {
-    "realm": "myrealm",
-    "auth-server-url": "http://keycloak.dev:8080",
-    "client_id": "nodejs-connect",
-    "client_secret": "c88a2c21-9d1a-4f83-a18d-66d75c4d8020",
-    "username": "user",
-    "password": "password",
-    "clients": [
-        "0448d03b-cb1a-4295-9c3d-c4099b934062"
-    ]
+    "realm": "realm-name",
+    "keycloak_base_url": "https://keycloak.example.org",
+    "client_id": "super-secure-client",
+    "username": "user@example.org",
+    "password": "passw0rd",
+    "is_legacy_endpoint": false
 }

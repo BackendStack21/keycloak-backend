@@ -1,13 +1,16 @@
 const qs = require('querystring')
 
 class AccessToken {
-  constructor (cfg, request) {
+  constructor (cfg, client) {
     this.config = cfg
-    this.request = request
+    this.client = client
   }
 
   async info (accessToken) {
-    const response = await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
+    const cfg = this.config
+
+    const endpoint = `${cfg.prefix}/realms/${cfg.realm}/protocol/openid-connect/userinfo`
+    const response = await this.client.get(endpoint, {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }
@@ -19,25 +22,38 @@ class AccessToken {
   refresh (refreshToken) {
     const cfg = this.config
 
-    return this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
+    const options = {
       grant_type: 'refresh_token',
       client_id: cfg.client_id,
-      client_secret: cfg.client_secret,
       refresh_token: refreshToken
-    }))
+    }
+    if (cfg.client_secret) {
+      options.client_secret = cfg.client_secret
+    }
+
+    const endpoint = `${cfg.prefix}/realms/${cfg.realm}/protocol/openid-connect/token`
+    return this.client.post(endpoint, qs.stringify(options))
   }
 
-  async get () {
+  async get (scope) {
     const cfg = this.config
 
     if (!this.data) {
-      const response = await this.request.post(`/auth/realms/${cfg.realm}/protocol/openid-connect/token`, qs.stringify({
+      const options = {
         grant_type: 'password',
         username: cfg.username,
         password: cfg.password,
-        client_id: cfg.client_id,
-        client_secret: cfg.client_secret
-      }))
+        client_id: cfg.client_id
+      }
+      if (cfg.client_secret) {
+        options.client_secret = cfg.client_secret
+      }
+      if (scope) {
+        options.scope = scope
+      }
+
+      const endpoint = `${cfg.prefix}/realms/${cfg.realm}/protocol/openid-connect/token`
+      const response = await this.client.post(endpoint, qs.stringify(options))
       this.data = response.data
 
       return this.data.access_token
@@ -55,7 +71,7 @@ class AccessToken {
         } catch (err) {
           delete this.data
 
-          return this.get()
+          return this.get(scope)
         }
       }
     }
