@@ -31,8 +31,9 @@
   },
   "homepage": "https://github.com/jkyberneees/keycloak-backend#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "jsonwebtoken": "^8.5.1"
+    "axios": "^1.2.1",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2"
   },
   "devDependencies": {
     "standard": "^17.0.0"
