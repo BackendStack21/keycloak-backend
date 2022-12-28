@@ -17,13 +17,13 @@ class Jwt {
   }
 
   decode (accessToken) {
-    return new Promise((resolve, reject) => {
-      resolve(new Token(accessToken))
-    })
+    return new Token(accessToken)
   }
 
   async verify (accessToken) {
-    await this.request.get(`/auth/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
+    const cfg = this.config
+
+    await this.request.get(`${cfg.prefix}/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }
