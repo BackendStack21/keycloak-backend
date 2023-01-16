@@ -26,8 +26,7 @@
     "LICENSE",
     "README.md",
     "libs/",
-    "dist/",
-    "tsconfig.json"
+    "dist/"
   ],
   "author": "Rolando Santamaria Maso <kyberneees@gmail.com>",
   "license": "MIT",
