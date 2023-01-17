@@ -1,6 +1,8 @@
 const config = require('../local/config-example')
-const keycloak = require('../dist')(config)
+const Keycloak = require('../dist').default
 const fs = require('fs');
+
+const keycloak = new Keycloak(config);
 
 (async () => {
   try {

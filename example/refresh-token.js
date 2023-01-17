@@ -1,5 +1,7 @@
 const config = require('../local/config-example')
-const keycloak = require('../dist')(config)
+const Keycloak = require('../dist').default
+
+const keycloak = new Keycloak(config)
 
 keycloak.accessToken.get().then(async (accessToken) => {
   // refresh operation is performed automatically on `keycloak.accessToken.get`

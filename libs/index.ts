@@ -16,29 +16,26 @@ export interface internalConfigI extends externalConfigI {
   prefix: string,
 }
 
-export default (cfg: externalConfigI) =>
-{
-  const icfg: internalConfigI = {
-    ...cfg,
-    prefix: ''
+export default class Keycloak {
+  public readonly jwt: Jwt;
+  public readonly accessToken: AccessToken;
+
+  constructor(cfg: externalConfigI) {
+    const icfg: internalConfigI = {
+      ...cfg,
+      prefix: ''
+    }
+    const client = Axios.create({
+      baseURL: icfg.keycloak_base_url
+    })
+
+    if (icfg.is_legacy_endpoint) {
+      icfg.prefix = '/auth'
+    }
+
+    this.accessToken = new AccessToken(icfg, client)
+    this.jwt = new Jwt(icfg, client)
   }
-  const client = Axios.create({
-    baseURL: icfg.keycloak_base_url
-  })
-
-
-
-  if (icfg.is_legacy_endpoint) {
-    icfg.prefix = '/auth'
-  }
-
-  const accessToken = new AccessToken(icfg, client)
-  const jwt = new Jwt(icfg, client)
-
-  return {
-    jwt,
-    accessToken
-  }
-}
+};
 
 
