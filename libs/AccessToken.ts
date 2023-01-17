@@ -48,7 +48,7 @@ export default class AccessToken {
     return this.client.post(endpoint, stringify(options))
   }
 
-  async get (scope: string): Promise<string> {
+  async get (scope?: string): Promise<string> {
     const cfg = this.config
 
     if (!this.data) {
