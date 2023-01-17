@@ -1,6 +1,6 @@
 {
-  "name": "keycloak-backend-ts",
-  "version": "4.0.0",
+  "name": "keycloak-backend",
+  "version": "3.0.0",
   "description": "Keycloak Node.js minimalist connector for backend services integration. ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

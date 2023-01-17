@@ -1,7 +1,5 @@
 const config = require('../local/config-example')
-const Keycloak = require('../dist').default
-
-const keycloak = new Keycloak(config)
+const keycloak = require('../dist')(config)
 
 keycloak.accessToken.get().then(async (accessToken) => {
   const token = keycloak.jwt.decode(accessToken)
