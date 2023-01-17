@@ -38,4 +38,4 @@ export default class Keycloak {
   }
 };
 
-
+module.exports = (cfg: externalConfigI) => new Keycloak(cfg);
