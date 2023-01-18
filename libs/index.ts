@@ -1,4 +1,4 @@
-const Axios = require('axios').default
+import Axios from "axios";
 import AccessToken from './AccessToken'
 import Jwt from "./Jwt"
 
@@ -37,5 +37,3 @@ export default class Keycloak {
     this.jwt = new Jwt(icfg, client)
   }
 };
-
-module.exports = (cfg: externalConfigI) => new Keycloak(cfg);
