@@ -1,15 +1,10 @@
-import Token from "./Token";
+import {Token} from "./Token";
 import {verify, VerifyOptions} from "jsonwebtoken"
 import {internalConfigI} from "./index";
 import {AxiosInstance} from "axios";
 
-export default class Jwt {
-  private readonly config: internalConfigI;
-  private request: AxiosInstance;
-  constructor (config: internalConfigI, request: AxiosInstance) {
-    this.config = config
-    this.request = request
-  }
+export class Jwt {
+  constructor (private readonly config: internalConfigI, private readonly request: AxiosInstance) {}
 
   verifyOffline (accessToken: string, cert: any, options?: VerifyOptions) {
     return new Promise((resolve, reject) => {
@@ -25,9 +20,7 @@ export default class Jwt {
   }
 
   async verify (accessToken: string): Promise<Token> {
-    const cfg = this.config
-
-    await this.request.get(`${cfg.prefix}/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
+    await this.request.get(`${this.config.prefix}/realms/${this.config.realm}/protocol/openid-connect/userinfo`, {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }

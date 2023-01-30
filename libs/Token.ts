@@ -1,6 +1,6 @@
 import decode from "jwt-decode"
 
-export default class Token {
+export class Token {
   private readonly token: string;
   private readonly content: any;
   constructor (token: string) {

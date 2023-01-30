@@ -24,20 +24,21 @@ More about Keycloak: http://www.keycloak.org/
 ## Using the keycloak-backend module
 ### Configuration
 ```js
-const keycloak = require('keycloak-backend')({
+const Keycloak = require('../dist').Keycloak
+const keycloak = new Keycloak({
   "realm": "realm-name",
   "keycloak_base_url": "https://keycloak.example.org",
   "client_id": "super-secure-client",
   "username": "user@example.org",
   "password": "passw0rd",
   "is_legacy_endpoint": false
-});
+})
 ```
 > The `is_legacy_endpoint` configuration property should be TRUE for older Keycloak versions (under 18)
 
 For TypeScript:
 ```ts
-import Keycloak from "keycloak-backend";
+import {Keycloak} from "keycloak-backend";
 const keycloak = new Keycloak({
     "realm": "realm-name",
     "keycloak_base_url": "https://keycloak.example.org",
