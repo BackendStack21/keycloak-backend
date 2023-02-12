@@ -1,15 +1,15 @@
-import {Token} from "./Token";
-import {verify, VerifyOptions} from "jsonwebtoken"
-import {internalConfigI} from "./index";
-import {AxiosInstance} from "axios";
+import { Token } from './Token'
+import { verify, VerifyOptions } from 'jsonwebtoken'
+import { IInternalConfig } from './index'
+import { AxiosInstance } from 'axios'
 
 export class Jwt {
-  constructor (private readonly config: internalConfigI, private readonly request: AxiosInstance) {}
+  constructor (private readonly config: IInternalConfig, private readonly request: AxiosInstance) {}
 
-  verifyOffline (accessToken: string, cert: any, options?: VerifyOptions) {
-    return new Promise((resolve, reject) => {
-      verify(accessToken, cert, options, (err, payload) => {
-        if (err) reject(err)
+  async verifyOffline (accessToken: string, cert: any, options?: VerifyOptions): Promise<Token> {
+    return await new Promise((resolve, reject) => {
+      verify(accessToken, cert, options, (err) => {
+        if (err != null) reject(err)
         resolve(new Token(accessToken))
       })
     })

@@ -1,21 +1,21 @@
-import decode from "jwt-decode"
+import decode from 'jwt-decode'
 
 export class Token {
-  private readonly token: string;
-  private readonly content: any;
+  private readonly token: string
+  private readonly content: any
+
   constructor (token: string) {
     this.token = token
     this.content = decode(this.token)
   }
 
   isExpired (): boolean {
-    return (this.content.exp * 1000) <= Date.now();
+    return (this.content.exp * 1000) <= Date.now()
   }
 
   hasApplicationRole (appName: string, roleName: string): boolean {
     const appRoles = this.content.resource_access[appName]
-
-    if (!appRoles) {
+    if (appRoles == null) {
       return false
     }
 
