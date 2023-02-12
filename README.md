@@ -83,6 +83,9 @@ const token = await keycloak.jwt.verifyOffline(accessToken, cert)
 ```
 
 ## Breaking changes
+### v4
+- Codebase migrated from JavaScript to TypeScript. Many thanks to @neferin12
+
 ### v3
 - The `UserManager` class was dropped
 - The `auth-server-url` config property was changed to `keycloak_base_url`
