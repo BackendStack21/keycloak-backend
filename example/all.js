@@ -1,7 +1,7 @@
 const config = require('../local/config-example')
-const keycloak = require('../libs/index')(config)
+const Keycloak = require('../dist').Keycloak
+const keycloak = new Keycloak(config)
 const fs = require('fs');
-
 (async () => {
   try {
     // current version of Keycloak requires the openid scope for accessing user info endpoint
