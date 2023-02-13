@@ -40,12 +40,12 @@ For TypeScript:
 ```ts
 import { Keycloak } from "keycloak-backend"
 const keycloak = new Keycloak({
-    "realm": "realm-name",
-    "keycloak_base_url": "https://keycloak.example.org",
-    "client_id": "super-secure-client",
-    "username": "user@example.org",
-    "password": "passw0rd",
-    "is_legacy_endpoint": false
+  "realm": "realm-name",
+  "keycloak_base_url": "https://keycloak.example.org",
+  "client_id": "super-secure-client",
+  "username": "user@example.org",
+  "password": "passw0rd",
+  "is_legacy_endpoint": false
 })
 ```
 
