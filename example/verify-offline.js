@@ -1,5 +1,6 @@
 const config = require('../local/config-example')
-const keycloak = require('../libs/index')(config)
+const Keycloak = require('../dist').Keycloak
+const keycloak = new Keycloak(config)
 const fs = require('fs')
 
 const cert = fs.readFileSync('./local/public_cert.pem')
