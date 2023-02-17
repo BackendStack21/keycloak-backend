@@ -1,4 +1,4 @@
-import decode from 'jwt-decode'
+import { decode } from 'jsonwebtoken'
 
 export class Token {
   private readonly token: string
