@@ -29,10 +29,9 @@ export class Keycloak {
       baseURL: icfg.keycloak_base_url
     })
 
-    if (icfg.is_legacy_endpoint == true) {
+    if (icfg.is_legacy_endpoint === true) {
       icfg.prefix = '/auth'
     }
-    
     this.accessToken = new AccessToken(icfg, client)
     this.jwt = new Jwt(icfg, client)
   }
