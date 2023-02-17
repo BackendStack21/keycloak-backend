@@ -15,7 +15,7 @@ const fs = require('fs');
     let token = await keycloak.jwt.verify(someAccessToken)
     console.log(token.isExpired())
     console.log(token.hasRealmRole('user'))
-    console.log(token.hasApplicationRole('nodejs-connect', 'vlm-readonly'))
+    console.log(token.hasApplicationRole('my-application', 'my-role'))
 
     // verify token offline, intended for micro-service authorization
     // using this method does not consider token invalidation, avoid long-term tokens here
@@ -23,7 +23,7 @@ const fs = require('fs');
     token = await keycloak.jwt.verifyOffline(someAccessToken, cert)
     console.log(token.isExpired())
     // console.log(token.hasRealmRole('user'))
-    // console.log(token.hasApplicationRole('nodejs-connect', 'vlm-readonly'))
+    // console.log(token.hasApplicationRole('my-application', 'my-role'))
 
     // how to manually refresh custom access token
     // (this operation is performed automatically for the service access token)

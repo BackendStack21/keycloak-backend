@@ -6,5 +6,6 @@ keycloak.accessToken.get().then(async (accessToken) => {
   const token = keycloak.jwt.decode(accessToken)
   console.log({ expired: token.isExpired() })
   console.log({ content: token.content })
-  console.log({ hasRole: token.hasApplicationRole('client-name', 'ROLE_NAME') })
+  console.log({ hasRole: token.hasRealmRole('my-role') })
+  console.log({ hasRole: token.hasApplicationRole('my-application', 'my-role') })
 })
