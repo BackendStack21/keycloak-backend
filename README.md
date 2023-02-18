@@ -1,4 +1,12 @@
 # keycloak-backend
+[![NPM version](https://badgen.net/npm/v/keycloak-backend)](https://www.npmjs.com/package/keycloak-backend)
+[![NPM Total Downloads](https://badgen.net/npm/dt/keycloak-backend)](https://www.npmjs.com/package/keycloak-backend)
+[![License](https://badgen.net/npm/license/keycloak-backend)](https://www.npmjs.com/package/keycloak-backend)
+[![TypeScript support](https://badgen.net/npm/types/keycloak-backend)](https://www.npmjs.com/package/keycloak-backend)
+[![Github stars](https://badgen.net/github/stars/BackendStack21/keycloak-backend?icon=github)](https://github.com/BackendStack21/keycloak-backend.git)
+
+<img src="logo.svg" width="400">  
+
 Keycloak Node.js minimalist connector for backend services integration. It aims to serve as base for high performance authorization middlewares.
 
 > In order to use this module, the used Keycloak client `Direct Access Grants Enabled` setting should be `ON`
