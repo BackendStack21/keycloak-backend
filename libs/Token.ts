@@ -1,6 +1,6 @@
 import { decode } from 'jsonwebtoken'
 
-export interface TokenContent {
+export interface ITokenContent {
     [key: string]: any,
 
     /**
@@ -40,7 +40,7 @@ export interface TokenContent {
 
 export class Token {
     public readonly token: string
-    public readonly content: TokenContent
+    public readonly content: ITokenContent
 
     constructor(token: string) {
         this.token = token
