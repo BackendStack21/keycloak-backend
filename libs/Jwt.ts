@@ -76,14 +76,6 @@ export class Jwt {
    * to make sure the token is still valid on the server-side. If the
    * call completes successfully the token is accepted and returned as a
    * `Token` wrapper for callers to inspect claims.
-   * @param accessToken - The JWT string to verify via Keycloak server
-   * @returns A Promise resolving to a `Token` instance when userinfo succeeds
-   */
-  /**
-   * Online verification that performs a Keycloak server `userinfo` call
-   * to make sure the token is still valid on the server-side. If the
-   * call completes successfully the token is accepted and returned as a
-   * `Token` wrapper for callers to inspect claims.
    *
    * @param accessToken - The JWT string to verify via Keycloak server
    * @returns A Promise resolving to a `Token` instance when userinfo succeeds
