@@ -12,20 +12,6 @@ export class Jwt {
   constructor(private readonly config: IInternalConfig, private readonly request: AxiosInstance) {}
 
   /**
-   * Verifies a token using a public certificate. For security reasons the
-   * `algorithms` option defaults to only allow `RS256` to avoid algorithm
-   * confusion attacks. Callers may pass additional `VerifyOptions` when
-   * needed. Resolves with a `Token` instance on success.
-   */
-  /**
-   * Verify token offline using a public certificate.
-   * Defaults to `RS256` algorithm allowed list for safety.
-   * @param accessToken - JWT string to be verified
-   * @param cert - Public certificate or key used for verification
-   * @param options - Optional jsonwebtoken VerifyOptions
-   * @returns A Promise resolving to a `Token` instance if verification succeeds
-   */
-  /**
    * Verify token offline using a public certificate.
    * Defaults to `RS256` algorithm allowed list for safety.
    *
@@ -54,13 +40,6 @@ export class Jwt {
    * Decode a token into a `Token` wrapper without performing cryptographic
    * verification. Useful in contexts where the token will be inspected
    * but not trusted until verified by other means.
-   * @param accessToken - The JWT string to decode
-   * @returns A `Token` instance containing the parsed payload
-   */
-  /**
-   * Decode a token into a `Token` wrapper without performing cryptographic
-   * verification. Useful in contexts where the token will be inspected
-   * but not trusted until verified by other means.
    *
    * @param accessToken - The JWT string to decode
    * @returns A `Token` instance containing the parsed payload
@@ -71,14 +50,6 @@ export class Jwt {
     return new Token(accessToken);
   }
 
-  /**
-   * Online verification that performs a Keycloak server `userinfo` call
-   * to make sure the token is still valid on the server-side. If the
-   * call completes successfully the token is accepted and returned as a
-   * `Token` wrapper for callers to inspect claims.
-   * @param accessToken - The JWT string to verify via Keycloak server
-   * @returns A Promise resolving to a `Token` instance when userinfo succeeds
-   */
   /**
    * Online verification that performs a Keycloak server `userinfo` call
    * to make sure the token is still valid on the server-side. If the
