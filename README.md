@@ -34,8 +34,8 @@ More about Keycloak: http://www.keycloak.org/
 
 ### Compatibility
 
-This library is tested against **Keycloak 26.0** (latest as of writing).
-It supports modern Keycloak versions by default. For versions older than 18, set `is_legacy_endpoint: true`.
+This library is tested against **Keycloak 26.0**. It supports modern Keycloak versions (18+) by default.
+For versions older than 18, set `is_legacy_endpoint: true`.
 
 ## Using the keycloak-backend module
 
