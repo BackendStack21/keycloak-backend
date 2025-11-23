@@ -1,7 +1,5 @@
 import { Keycloak } from "../../libs/Keycloak";
 import { IExternalConfig } from "../../libs/Keycloak";
-import { Token } from "../../libs/Token";
-
 // Integration test configuration
 const config: IExternalConfig = {
   realm: "test-realm",
